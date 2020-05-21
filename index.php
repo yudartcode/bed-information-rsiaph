@@ -38,17 +38,10 @@
                         <?php
                         }
                         ?>
-
-                        <!-- <div class="carousel-item">
-                            <img src="res/slide/image2.jpg" class="w-100 h-100" alt="res/slide/image2.jpg">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="res/slide/image4.jpg" class="w-100 h-100" alt="res/slide/image4.jpg">
-                        </div> -->
                     </div>
                 </div>
                 <!-- end slide -->
-                <div class="bg-primary shadow text-light mt-3 rounded-lg d-flex justify-content-center p-1" style="height: 83px">
+                <div class="bg-primary shadow text-light mt-3 rounded-lg d-flex justify-content-center p-1" style="height: 90px">
                     <p class="display-4 m-0" id="datetime"></p>
                 </div>
             </div>

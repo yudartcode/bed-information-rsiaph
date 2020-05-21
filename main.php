@@ -8,16 +8,16 @@ if ($bedData === FALSE) { ?>
     foreach ($bed["bed"] as $key => $value) { ?>
         <div class="card w-50 float-left p-1">
             <div class="row no-gutters">
-                <div class="bg-primary shadow text-light align-self-center rounded-lg" style="width: 105px; height: 105px">
-                    <div class="row d-flex justify-content-center">
-                        <h4><?= str_replace("_", " ", (strtoupper($key))) ?></h4>
+                <div class="bg-primary shadow text-light rounded-lg d-flex align-content-center flex-wrap" style="width: 125px; height: 82px">
+                    <div class="d-flex justify-content-center" style="width: 120px">
+                        <h5 class="m-0 p-0 text-center" style="line-height: 1.2rem"><?= str_replace("_", " ", (strtoupper($key))) ?></h5>
                     </div>
-                    <div class="row d-flex justify-content-center">
-                        <h1 class="h1 font-weight-bold"><?= $value["available"] ?></h1>
+                    <div class="d-flex justify-content-center" style="width: 120px">
+                        <h1 class="m-0 p-0" style="line-height: 2rem"><?= $value["available"] ?></h1>
                     </div>
                 </div>
-                <div class="col-md-8 mb-0 pb-0">
-                    <div class="card-body pb-0">
+                <div class="col-6 mb-0 p-0 pl-3 mt-2">
+                    <div class="card-body p-0">
                         <div class="row">
                             <div class="col">
                                 <h5 class="card-title">Tersedia</h5>

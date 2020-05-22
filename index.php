@@ -23,42 +23,52 @@
                 <!-- start slide -->
                 <div id="slide-ph" class="carousel slide img-thumbnail" data-ride="carousel">
                     <div class="carousel-inner" style="height: 350px">
-                        <div class="carousel-item active">
-                            <img src="res/slide/image1.jpg" class="w-100 h-100" alt="res/slide/image1.jpg">
-                        </div>
-
                         <?php
                         $dirname = "res/slide/";
                         $images = glob($dirname . "*.jpg");
+                        $ke = 0;
                         foreach ($images as $image) {
                         ?>
-                            <div class="carousel-item">
+                            <div class="carousel-item <?= ($ke == 0) ? 'active' : '' ; ?>">
                                 <img src="<?= $image ?>" class="w-100 h-100" alt="<?= $image ?>">
                             </div>
                         <?php
+                        $ke++;
                         }
                         ?>
                     </div>
                 </div>
                 <!-- end slide -->
-                <div class="bg-primary shadow text-light mt-3 rounded-lg d-flex justify-content-center p-1" style="height: 90px">
+                <div class="bg-primary shadow text-light mt-3 rounded-lg d-flex justify-content-center p-1" style="height: 85px">
                     <p class="display-4 m-0" id="datetime"></p>
                 </div>
             </div>
-                            <hr><hr><hr>
-            <div class="col-lg-6 pl-0" id="data">
+            <div class="col-lg-6 p-0">
+                <div id="slide-data" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="d-flex flex-wrap" id="data">
 
+                            </div>
+                        </div>
+
+                        <div class="carousel-item">
+                            <div class="d-flex flex-wrap" id="data2">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row fixed-bottom">
+                <?php $bedData = @file_get_contents('https://script.google.com/macros/s/AKfycbwjofX41Qll_2LohSzF3Na6SOciJ5g8seAv4UOujgrj62Nb36pO/exec');
+                $bed = json_decode($bedData, true); ?>
+                <marquee>
+                    <h3 class="display-4 font-weight-bolder"><?= $bed["runing_text"] ?></h3>
+                </marquee>
             </div>
         </div>
-        <div class="row mt-3">
-            <?php $bedData = @file_get_contents('https://script.google.com/macros/s/AKfycbwjofX41Qll_2LohSzF3Na6SOciJ5g8seAv4UOujgrj62Nb36pO/exec');
-            $bed = json_decode($bedData, true); ?>
-            <marquee>
-                <h3 class="display-4 font-weight-bolder"><?= $bed["runing_text"] ?></h3>
-            </marquee>
-        </div>
     </div>
-
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -67,8 +77,10 @@
         $(document).ready(function() {
             const months = ['JAN', 'FEB', 'MAR', 'APR', 'MEI', 'JUN', 'JUL', 'AGU', 'SEP', 'OKT', 'NOV', 'DES'];
             $('#data').load('main.php');
+            $('#data2').load('main2.php');
             setInterval(function() {
                 $("#data").load('main.php');
+                $("#data2").load('main2.php');
                 var dt = new Date();
                 $('#datetime').html(dt.getDate() + ' ' + months[dt.getMonth()] + ' ' + dt.getFullYear() + '-' + dt.getHours() + ':' + dt.getMinutes() + ':' + dt.getSeconds());
             }, 1000);

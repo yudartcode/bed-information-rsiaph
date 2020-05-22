@@ -7,7 +7,7 @@ if ($bedData === FALSE) { ?>
     $bed = json_decode($bedData, true);
     $i = 0;
     foreach ($bed["bed"] as $key => $value) {
-        if ($i < 6) { ?>
+        if ($i >= 6) { ?>
             <div class="card w-50 d-flex flex-row p-1">
                 <div class="bg-primary text-light rounded-lg d-flex align-content-around flex-wrap w-50" style="height: 145px">
                     <div class="d-flex justify-content-center w-100">

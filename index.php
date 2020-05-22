@@ -43,7 +43,7 @@
                     <p class="display-4 m-0" id="datetime"></p>
                 </div>
             </div>
-            <div class="col-lg-6 p-0">
+            <div class="col-lg-6 p-0 pr-3">
                 <div id="slide-data" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">

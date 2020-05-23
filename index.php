@@ -5,11 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- <meta http-equiv="refresh" content="5"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="palette.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-    <!-- <meta http-equiv="refresh" content="3"> -->
     <title>Bed Information</title>
 </head>
 
@@ -20,7 +18,9 @@
         </div>
         <div class="row">
             <div class="col-lg-6">
-                <!-- start slide -->
+                <div class="bg-primary shadow text-light mb-3 mt-1 rounded-lg d-flex justify-content-center p-1" style="height: 85px">
+                    <p class="display-4 m-0" id="datetime"></p>
+                </div>
                 <div id="slide-ph" class="carousel slide img-thumbnail" data-ride="carousel">
                     <div class="carousel-inner" style="height: 350px">
                         <?php
@@ -29,18 +29,14 @@
                         $ke = 0;
                         foreach ($images as $image) {
                         ?>
-                            <div class="carousel-item <?= ($ke == 0) ? 'active' : '' ; ?>">
+                            <div class="carousel-item <?= ($ke == 0) ? 'active' : ''; ?>">
                                 <img src="<?= $image ?>" class="w-100 h-100" alt="<?= $image ?>">
                             </div>
                         <?php
-                        $ke++;
+                            $ke++;
                         }
                         ?>
                     </div>
-                </div>
-                <!-- end slide -->
-                <div class="bg-primary shadow text-light mt-3 rounded-lg d-flex justify-content-center p-1" style="height: 85px">
-                    <p class="display-4 m-0" id="datetime"></p>
                 </div>
             </div>
             <div class="col-lg-6 p-0 pr-3">
@@ -60,13 +56,13 @@
                     </div>
                 </div>
             </div>
-            <div class="row fixed-bottom">
-                <?php $bedData = @file_get_contents('https://script.google.com/macros/s/AKfycbwjofX41Qll_2LohSzF3Na6SOciJ5g8seAv4UOujgrj62Nb36pO/exec');
-                $bed = json_decode($bedData, true); ?>
-                <marquee>
-                    <h3 class="display-4 font-weight-bolder"><?= $bed["runing_text"] ?></h3>
-                </marquee>
-            </div>
+        </div>
+        <div style="bottom: 0px">
+            <?php $bedData = @file_get_contents('https://script.google.com/macros/s/AKfycbwjofX41Qll_2LohSzF3Na6SOciJ5g8seAv4UOujgrj62Nb36pO/exec');
+            $bed = json_decode($bedData, true); ?>
+            <marquee>
+                <h3 class="display-4 font-weight-bolder"><?= $bed["runing_text"] ?></h3>
+            </marquee>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -82,7 +78,7 @@
                 $("#data").load('main.php');
                 $("#data2").load('main2.php');
                 var dt = new Date();
-                $('#datetime').html(dt.getDate() + ' ' + months[dt.getMonth()] + ' ' + dt.getFullYear() + '-' + dt.getHours() + ':' + dt.getMinutes() + ':' + dt.getSeconds());
+                $('#datetime').html('Info Bed : ' + dt.getDate() + ' ' + months[dt.getMonth()] + ' ' + dt.getFullYear());
             }, 1000);
         });
     </script>
